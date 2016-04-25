@@ -36,9 +36,7 @@ struct sb_listen_config_t
 // Define on which ports the daemon should listen and which version it
 // will pretend to be running on that port:
 static struct sb_listen_config_t sb_listen_config[] = {
-    {22,   "SSH-2.0-OpenSSH_4.5p1 FreeBSD-20061110\n"},
-    {222,  "SSH-2.0-OpenSSH_5.4p1 Debian-5\n"},
-    {2222, "SSH-2.0-OpenSSH_5.3\n"},
+    {65522,  "SSH-2.0-OpenSSH_5.4p1 Debian-5\n"},
 };
 
 // The maximum number of clients that will be kept hanging, if more clients
