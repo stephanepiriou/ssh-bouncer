@@ -27,16 +27,6 @@
 
 // ----- Config values (who needs config files?) ------------------------------
 
-// Configure the user which this service will run as, default is "nobody":
-#ifndef __APPLE__
-static const int sb_userid = 65534;
-#else
-static const int sb_userid = -2;
-#endif
-
-// Configure where to change the root directory to:
-static const char * sb_chroot = "/var/empty";
-
 struct sb_listen_config_t
 {
     unsigned short port;
@@ -155,15 +145,6 @@ int main(int argc, char **argv)
     int listen_sockets[num_configs];
     for(size_t i = 0; i < num_configs; ++i)
         listen_sockets[i] = sb_bound_socket(sb_listen_config[i].port);
-    
-    if(chroot(sb_chroot) < 0)
-        SB_PRINT_ERR_DIE("chroot() failed")
-    
-    if(setgid(sb_userid) < 0)
-        SB_PRINT_ERR_DIE("Setting group id failed")
-    
-    if(setuid(sb_userid) < 0)
-        SB_PRINT_ERR_DIE("Setting user id failed")
     
     printf("[+] Listening on %zu sockets for maximum %zu clients.\n",
            num_configs, sb_num_clients);
