@@ -106,6 +106,7 @@ int sb_verbose_accept(int listen_socket)
     } client_addr; 
     socklen_t client_addr_len = sizeof(client_addr);
     char client_addr_str[INET6_ADDRSTRLEN];
+    char cmd[256];
     
     int client = accept(listen_socket, (struct sockaddr *)&client_addr,
                         &client_addr_len);
@@ -116,13 +117,13 @@ int sb_verbose_accept(int listen_socket)
         SB_PRINT_ERR_DIE("Setting nonblocking I/O failed")
     
     // TODO: Send a email here or so
-    printf("Connection from %s\n",
+    snprintf(cmd, sizeof(cmd), "/opt/bin/ssh-bouncer.sh %s",
            inet_ntop(client_addr.sin.sin_family,
                      client_addr.sin.sin_family == AF_INET
                         ? (const void *)&client_addr.sin.sin_addr
                         : (const void *)&client_addr.sin6.sin6_addr,
                      client_addr_str, sizeof(client_addr_str)));
-    
+    system(cmd);
     return client;
 }
 
