@@ -1,0 +1,8 @@
+[Unit]
+Description=ssh-bouncer service
+WantedBy=multi-user.target
+ 
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ssh-bouncer
+Restart=always
