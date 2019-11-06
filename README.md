@@ -8,7 +8,8 @@ This is useful when you run sshd on a non-default port but want to pretend
 that SSH is running on a standard port.
 
 ## Modif 
-Added install.sh for brainless install on debian type system.
+- Created fake ssh-bouncer home folder for chroot fake user file system (Note: should find better)
+- Added install.sh for brainless install on debian system type.
 
 ## TODO 
 Fix missing error handling in line 138 and fix log system for more fun.
