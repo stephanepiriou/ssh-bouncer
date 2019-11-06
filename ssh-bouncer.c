@@ -129,7 +129,7 @@ int sb_verbose_accept(int listen_socket)
         SB_PRINT_ERR_DIE("Setting nonblocking I/O failed")
     
     // TODO: Send a email here or so
-    snprintf(cmd, sizeof(cmd), "/opt/bin/ssh-bouncer.sh %s",
+    snprintf(cmd, sizeof(cmd), "/usr/local/bin/ssh-bouncer.sh %s",
            inet_ntop(client_addr.sin.sin_family,
                      client_addr.sin.sin_family == AF_INET
                         ? (const void *)&client_addr.sin.sin_addr
