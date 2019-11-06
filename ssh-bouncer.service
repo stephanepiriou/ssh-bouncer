@@ -6,3 +6,6 @@ WantedBy=multi-user.target
 Type=simple
 ExecStart=/usr/local/bin/ssh-bouncer
 Restart=always
+
+[Install]
+WantedBy=multi-user.target
