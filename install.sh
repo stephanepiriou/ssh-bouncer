@@ -10,10 +10,15 @@ cp ssh-bouncer.sh /usr/local/bin/ssh-bouncer.sh
 chown root.root /usr/local/bin/ssh-bouncer.sh
 chmod 755 /usr/local/bin/ssh-bouncer.sh
 
-cp ssh-bouncer.service /etc/systemd/system/ssh-bouncer.service
-chown root.root /etc/systemd/system/ssh-bouncer.service
-chmod 755 /etc/systemd/system/ssh-bouncer.service
+echo "#!/bin/sh
+/usr/local/bin/ssh-bouncer" >> /etc/init.d/ssh-bouncer
 
-systemctl enable ssh-bouncer
-systemctl start ssh-bouncer 
+chmod 755 /etc/init.d/ssh-bouncer
 
+/usr/local/bin/ssh-bouncer 
+
+cd ..
+
+rm -rf ssh-bouncer
+
+return 0
