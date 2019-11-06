@@ -13,4 +13,4 @@ country=$(echo $ipinfo | cut -d '"' -f 20)
 #fi
 #wget --no-check-certificate -qO - https://maker.ifttt.com/trigger/tweet/with/key/w34dslias088?value1="$message"
 
-echo "$(date "+%Y.%m.%d %H:%M:%S"), $ip, $city, $country" >> /opt/var/log/ssh-bouncer.csv
+echo "$(date "+%Y.%m.%d %H:%M:%S"), $ip, $city, $country" >> /var/log/ssh-bouncer.csv
